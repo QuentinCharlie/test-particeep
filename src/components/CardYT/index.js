@@ -13,11 +13,17 @@ const CardYT = ({
   category,
   likes,
   dislikes,
+  likedMovies,
   deleteMovie,
+  changeLikeStatus,
 }) => {
-  const handleClick = (e) => {
+  const handleDeleteClick = (e) => {
     const movieId = e.currentTarget.id;
     deleteMovie(movieId);
+  };
+  const handleLikeClick = (e) => {
+    const movieId = e.currentTarget.id;
+    changeLikeStatus(movieId);
   };
   return (
     <CardYTStyled>
@@ -33,13 +39,15 @@ const CardYT = ({
               <Icon name="thumbs down" /> {dislikes}
             </div>
           </Card.Description>
-          <div id={id} className="delete-button" onClick={handleClick}>
+          <div id={id} className="delete-button" onClick={handleDeleteClick}>
             <Button icon size="mini">
               <Icon name="close" color="red" />
             </Button>
           </div>
         </Card.Content>
-        <Button circular icon="like" />
+        <Button id={id} className="like-button" circular onClick={handleLikeClick} color={likedMovies[Number(id)] === true ? 'red' : 'grey'}>
+          <Icon name="like" />
+        </Button>
       </Card>
     </CardYTStyled>
   );
@@ -51,7 +59,9 @@ CardYT.propTypes = {
   category: PropTypes.string.isRequired,
   likes: PropTypes.number.isRequired,
   dislikes: PropTypes.number.isRequired,
+  likedMovies: PropTypes.object.isRequired,
   deleteMovie: PropTypes.func.isRequired,
+  changeLikeStatus: PropTypes.func.isRequired,
 };
 
 
