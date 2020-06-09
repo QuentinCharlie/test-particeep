@@ -1,13 +1,12 @@
 // Action Types
-import { DO_SOMETHING } from 'src/actions/demo';
+import { DO_SOMETHING } from 'src/actions/movies';
 
+import movies from 'src/data/movies';
 // Initial State
-const initialState = {
-  message: 'hello',
-};
+const initialState = movies;
 
 // Reducer
-const demoReducer = (state = initialState, action = {}) => {
+const moviesReducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case DO_SOMETHING:
       return {
@@ -20,4 +19,4 @@ const demoReducer = (state = initialState, action = {}) => {
   }
 };
 
-export default demoReducer;
+export default moviesReducer;
