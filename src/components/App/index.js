@@ -12,7 +12,7 @@ import AppStyled from './AppStyled';
 const App = ({ movies }) => (
   <AppStyled>
     <h1>Test Particeep</h1>
-    <Card.Group>
+    <Card.Group centered >
       {movies.map((movie) => (
         <CardYT 
           key={movie.id}

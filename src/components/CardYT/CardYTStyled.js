@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const CardYTStyled = styled.div`
 
-  /* width: 150px!important; */
+  /* width: 175px!important; */
 
   .likes-count {
     display: flex;
