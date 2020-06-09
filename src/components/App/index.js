@@ -9,33 +9,71 @@ import AppStyled from './AppStyled';
 
 
 // == Composant
-const App = ({ movies }) => {
+const App = ({
+  movies,
+  filteredMovies,
+  categories,
+  activeCategory,
+  filterByCategory,
+  changeActiveCategory,
+}) => {
   const handleFilterClick = (e) => {
-    console.log('test');
+    const categoryClicked = e.currentTarget.dataset.category;
+    if (activeCategory === categoryClicked) {
+      filterByCategory('all');
+    }
+    else {
+      filterByCategory(categoryClicked);
+      changeActiveCategory(categoryClicked);
+    }
   };
   return (
     <AppStyled>
       <h1>Test Particeep</h1>
-      <Menu widths={1} className="filter-menu">
+      <Menu widths={categories.length + 1} className="filter-menu">
         <Menu.Item
-          name='Categorie'
-          // active={activeItem === 'categorie'}
+          key="all"
+          data-category="all"
           onClick={handleFilterClick}
         >
-          Categorie
+          Tout
         </Menu.Item>
+        {categories.map((category) => (
+        <Menu.Item
+          key={category}
+          data-category={category}
+          onClick={handleFilterClick}
+        >
+          {category}
+        </Menu.Item>
+        ))}
       </Menu>
       <Card.Group centered >
-        {movies.map((movie) => (
-          <CardYT 
-            key={movie.id}
-            id={movie.id}
-            title={movie.title}
-            category={movie.category}
-            likes={movie.likes}
-            dislikes={movie.dislikes}
-          />
-        ))}
+        {activeCategory === 'all' && (
+          movies.map((movie) => (
+            <CardYT 
+              key={movie.id}
+              id={movie.id}
+              title={movie.title}
+              category={movie.category}
+              likes={movie.likes}
+              dislikes={movie.dislikes}
+            />
+          ))
+        )}
+        {activeCategory !== 'all' && (
+          filteredMovies.map((movie) => (
+            <CardYT 
+              key={movie.id}
+              id={movie.id}
+              title={movie.title}
+              category={movie.category}
+              likes={movie.likes}
+              dislikes={movie.dislikes}
+            />
+          ))
+        )}
+        
       </Card.Group>
     </AppStyled>
   );
@@ -43,7 +81,17 @@ const App = ({ movies }) => {
 
 App.propTypes = {
   movies: PropTypes.array.isRequired,
+  categories: PropTypes.array.isRequired,
+  activeCategory: PropTypes.string.isRequired,
+  filterByCategory: PropTypes.func.isRequired,
+  changeActiveCategory: PropTypes.func.isRequired,
 };
+
+App.defaultProps = {
+  filteredMovies: [],
+}
+
+
 
 
 // == Export

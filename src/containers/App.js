@@ -4,21 +4,28 @@ import { connect } from 'react-redux';
 import App from 'src/components/App';
 
 // Action Creators
-import { doSomething } from 'src/actions/movies';
+import { filterByCategory, changeActiveCategory } from 'src/actions/movies';
 
 // == Data / state
 // Notre composant à besoin de données depuis le state ?
 // On prépare un objet avec les props attendues par le composant
 const mapStateToProps = (state) => ({
-  movies: state.movies,
+  movies: state.movies.movies,
+  filteredMovies: state.movies.filteredMovies,
+  categories: state.categories.uniqueCategories,
+  activeCategory: state.categories.activeCategory,
 });
 
 // == Actions / dispatch
 // Notre composant à besoin d'agir sur le state ?
 // On prépare un objet avec les props attendues par le composant
+// eslint-disable-next-line no-unused-vars
 const mapDispatchToProps = (dispatch) => ({
-  doAction: () => {
-    dispatch(doSomething('Hello'));
+  filterByCategory: (category) => {
+    dispatch(filterByCategory(category));
+  },
+  changeActiveCategory: (category) => {
+    dispatch(changeActiveCategory(category));
   },
 });
 
