@@ -6,6 +6,10 @@ const AppStyled = styled.div`
   margin: 1em auto;
   text-align: center;
 
+  h1 {
+    margin-bottom: 1em;
+  }
+
 `;
 
 

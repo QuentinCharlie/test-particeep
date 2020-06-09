@@ -26,8 +26,13 @@ const CardYT = ({
             <Icon name="thumbs down" /> {dislikes}
           </div>
         </Card.Description>
-        <Button circular icon="like" />
+        <div className="delete-button">
+          <Button icon size="mini">
+            <Icon name="close" color="red" />
+          </Button>
+        </div>
       </Card.Content>
+      <Button circular icon="like" />
     </Card>
   </CardYTStyled>
 );
