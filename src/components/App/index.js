@@ -1,7 +1,7 @@
 // == Import npm
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Menu, Card } from 'semantic-ui-react';
+import { Button, Menu, Card, Dropdown } from 'semantic-ui-react';
 
 // == Import
 import CardYT from 'src/containers/CardYT';
@@ -21,7 +21,7 @@ const App = ({
     filterByCategory('all');
     changeActiveCategory('all');
   }, [filteredMovies.length === 0]);
-  
+
   const handleFilterClick = (e) => {
     const categoryClicked = e.currentTarget.dataset.category;
     if (activeCategory === categoryClicked) {
@@ -37,7 +37,8 @@ const App = ({
   return (
     <AppStyled>
       <h1>Test Particeep</h1>
-      <Menu inverted pointing widths={categories.length + 1} className="filter-menu">
+      {categories.length < 5 && (
+        <Menu inverted pointing widths={categories.length + 1} className="filter-menu">
         <Menu.Item
           key="all"
           active={activeCategory === 'all'}
@@ -57,6 +58,34 @@ const App = ({
         </Menu.Item>
         ))}
       </Menu>
+      )}
+      {categories.length >= 5 && (
+        <Menu fluid inverted>
+          <Dropdown  item simple text='Categories'>
+            <Dropdown.Menu>
+              <Dropdown.Item
+                key="all"
+                active={activeCategory === 'all'}
+                data-category="all"
+                onClick={handleFilterClick}
+              >
+                All
+              </Dropdown.Item>
+              {categories.map((category) => (
+              <Dropdown.Item
+                key={category}
+                active={activeCategory === category}
+                data-category={category}
+                onClick={handleFilterClick}
+              >
+                {category}
+              </Dropdown.Item>
+              ))}
+            </Dropdown.Menu>
+          </Dropdown>
+        </Menu>
+      )}
+      
       <Card.Group centered >
         {activeCategory === 'all' && (
           movies.map((movie) => (

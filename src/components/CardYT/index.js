@@ -23,7 +23,6 @@ const CardYT = ({
     deleteMovie(id, category);
 
     const filteredMovies = movies.filter((movie) => movie.id !== id);
-    console.log(filteredMovies);
     const categories = [];
     filteredMovies.map((movie) => categories.push(movie.category));
     const uniqueCategories = [...new Set(categories)];
