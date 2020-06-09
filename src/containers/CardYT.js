@@ -4,12 +4,13 @@ import { connect } from 'react-redux';
 import CardYT from 'src/components/CardYT';
 
 // Action Creators
-import { deleteMovie, changeLikeStatus } from 'src/actions/movies';
+import { deleteMovie, changeLikeStatus, updateCategories } from 'src/actions/movies';
 
 // == Data / state
 // Notre composant à besoin de données depuis le state ?
 // On prépare un objet avec les props attendues par le composant
 const mapStateToProps = (state) => ({
+  movies: state.movies,
   likedMovies: state.likes,
 });
 
@@ -17,11 +18,14 @@ const mapStateToProps = (state) => ({
 // Notre composant à besoin d'agir sur le state ?
 // On prépare un objet avec les props attendues par le composant
 const mapDispatchToProps = (dispatch) => ({
-  deleteMovie: (id) => {
-    dispatch(deleteMovie(id));
+  deleteMovie: (id, category) => {
+    dispatch(deleteMovie(id, category));
   },
   changeLikeStatus: (id) => {
     dispatch(changeLikeStatus(id));
+  },
+  updateCategories: (updatedCategories) => {
+    dispatch(updateCategories(updatedCategories));
   },
 });
 

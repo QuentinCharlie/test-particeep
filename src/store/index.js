@@ -2,14 +2,14 @@ import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 // middlewares
-import logMiddleware from 'src/middlewares/logMiddleware';
+import appMiddleware from 'src/middlewares/appMiddleware';
 
 // Reducer
 import rootReducer from 'src/reducers';
 
 const enhancers = composeWithDevTools(
   applyMiddleware(
-    logMiddleware,
+    appMiddleware,
     // ... autres middlewares
   ),
 );

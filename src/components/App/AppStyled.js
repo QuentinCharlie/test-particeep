@@ -13,8 +13,9 @@ const AppStyled = styled.div`
     margin-bottom: .5em;
   }
 
-  .input {
-    margin: 0 2em 1.5em 2em;
+  .filter-menu {
+    margin-bottom: 1.5em;
+    padding: 0 2em;
   }
 
 `;

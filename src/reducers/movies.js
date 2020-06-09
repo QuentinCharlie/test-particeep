@@ -10,6 +10,7 @@ const moviesReducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case DELETE_MOVIE: {
       const filteredMovies = state.filter((movie) => movie.id !== action.id);
+
       return [
         ...filteredMovies,
       ];

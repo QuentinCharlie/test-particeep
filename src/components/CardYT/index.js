@@ -8,6 +8,7 @@ import CardYTStyled from './CardYTStyled';
 
 // == Composant
 const CardYT = ({
+  movies,
   id,
   title,
   category,
@@ -15,15 +16,21 @@ const CardYT = ({
   dislikes,
   likedMovies,
   deleteMovie,
+  updateCategories,
   changeLikeStatus,
 }) => {
-  const handleDeleteClick = (e) => {
-    const movieId = e.currentTarget.id;
-    deleteMovie(movieId);
+  const handleDeleteClick = () => {
+    deleteMovie(id, category);
+
+    const filteredMovies = movies.filter((movie) => movie.id !== id);
+    console.log(filteredMovies);
+    const categories = [];
+    filteredMovies.map((movie) => categories.push(movie.category));
+    const uniqueCategories = [...new Set(categories)];
+    updateCategories(uniqueCategories);
   };
-  const handleLikeClick = (e) => {
-    const movieId = e.currentTarget.id;
-    changeLikeStatus(movieId);
+  const handleLikeClick = () => {
+    changeLikeStatus(id);
   };
   return (
     <CardYTStyled>
@@ -39,13 +46,13 @@ const CardYT = ({
               <Icon name="thumbs down" /> {dislikes}
             </div>
           </Card.Description>
-          <div id={id} className="delete-button" onClick={handleDeleteClick}>
+          <div className="delete-button" onClick={handleDeleteClick}>
             <Button icon size="mini">
               <Icon name="close" color="red" />
             </Button>
           </div>
         </Card.Content>
-        <Button id={id} className="like-button" circular onClick={handleLikeClick} color={likedMovies[Number(id)] === true ? 'red' : 'grey'}>
+        <Button className="like-button" circular onClick={handleLikeClick} color={likedMovies[Number(id)] === true ? 'red' : 'grey'}>
           <Icon name="like" />
         </Button>
       </Card>
@@ -54,6 +61,7 @@ const CardYT = ({
 };
 
 CardYT.propTypes = {
+  movies: PropTypes.array.isRequired,
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
@@ -61,6 +69,7 @@ CardYT.propTypes = {
   dislikes: PropTypes.number.isRequired,
   likedMovies: PropTypes.object.isRequired,
   deleteMovie: PropTypes.func.isRequired,
+  updateCategories: PropTypes.func.isRequired,
   changeLikeStatus: PropTypes.func.isRequired,
 };
 
