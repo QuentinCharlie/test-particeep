@@ -27,7 +27,7 @@ const CardYT = ({
   };
   return (
     <CardYTStyled>
-      <Card color="red">
+      <Card>
         <Card.Content>
           <Card.Header>{title}</Card.Header>
           <Card.Meta>{category}</Card.Meta>
