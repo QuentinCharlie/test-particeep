@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Button, Card, Icon } from 'semantic-ui-react';
 
 // == Import
-import CardYT from 'src/components/CardYT';
+import CardYT from 'src/containers/CardYT';
 import AppStyled from './AppStyled';
 
 
@@ -16,6 +16,7 @@ const App = ({ movies }) => (
       {movies.map((movie) => (
         <CardYT 
           key={movie.id}
+          id={movie.id}
           title={movie.title}
           category={movie.category}
           likes={movie.likes}

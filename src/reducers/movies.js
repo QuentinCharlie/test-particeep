@@ -1,5 +1,5 @@
 // Action Types
-import { DO_SOMETHING } from 'src/actions/movies';
+import { DELETE_MOVIE } from 'src/actions/movies';
 
 import movies from 'src/data/movies';
 // Initial State
@@ -8,11 +8,13 @@ const initialState = movies;
 // Reducer
 const moviesReducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case DO_SOMETHING:
-      return {
-        ...state,
-        message: action.message,
-      };
+    case DELETE_MOVIE: {
+      const filteredMovies = state.filter((movie) => movie.id !== action.id);
+      console.log(filteredMovies);
+      return [
+        ...filteredMovies,
+      ];
+    }
 
     default:
       return state;

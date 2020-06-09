@@ -1,8 +1,8 @@
 // Types
-export const DO_SOMETHING = 'DO_SOMETHING';
+export const DELETE_MOVIE = 'DELETE_MOVIE';
 
 // Creators
-export const doSomething = (message) => ({
-  type: DO_SOMETHING,
-  message,
+export const deleteMovie = (id) => ({
+  type: DELETE_MOVIE,
+  id,
 });
