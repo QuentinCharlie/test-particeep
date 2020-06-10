@@ -65,11 +65,11 @@ const App = ({
         fluid
         multiple
         selection
-        options={categoryOptions}
+        options={categoryOptions} 
         onChange={handleFilterChange}
       />
 
-      <Card.Group centered className="cards">
+      <Card.Group centered className="cards" style={posterBackground !== 'none' ? {opacity: 0.25} : {opacity: 1}}>
         { // Every movies/categories (when no filter)
           (activeCategories.length === 0 || filteredMovies.length === 0) && (
           paginate(movies, moviesPerPage, activeStatePage).map((movie) =>  (
