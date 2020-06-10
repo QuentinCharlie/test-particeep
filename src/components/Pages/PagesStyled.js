@@ -6,7 +6,7 @@ const PagesStyled = styled.div`
     margin-bottom: .5em!important;
   }
   .movie-per-page {
-    margin-left: 1em;
+    margin-bottom: 1em;
   }
 
 `;

@@ -1,7 +1,7 @@
 // == Import npm
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Card, Dropdown } from 'semantic-ui-react';
+import { Card, Dropdown } from 'semantic-ui-react';
 
 // == Import
 import CardYT from 'src/containers/CardYT';
@@ -52,7 +52,8 @@ const App = ({
     <AppStyled>
       <h1>Test Particeep</h1>
 
-      {posterBackground !== 'none' && (
+      { // Displayed only when mouse/finger activates a poster
+        posterBackground !== 'none' && (
         <div 
         className="cover"
         style={{ backgroundImage: `url(${posterBackground})` }}

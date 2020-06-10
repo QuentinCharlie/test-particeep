@@ -35,11 +35,9 @@ const CardYT = ({
     changeLikeStatus(id);
   };
   const handleMouseEnter = () => {
-    console.log(poster);
     setBackgroundPoster(poster);
   };
   const handleMouseLeave = () => {
-    // console.log('leaves');
     removeBackgroundPoster();
   };
   return (
@@ -48,10 +46,18 @@ const CardYT = ({
         <Card.Content>
           <Card.Header>{title}</Card.Header>
           <Card.Meta>{category}</Card.Meta>
+
           <div className="like-bar">
-            <span className="green-bar" style={{ width: `${likes / (likes + dislikes) * 100}%` }} />
-            <span className="red-bar" style={{ width: `${dislikes / (likes + dislikes) * 100}%` }} />
+            <span
+              className="green-bar"
+              style={{ width: `${likes / (likes + dislikes) * 100}%` }}
+            />
+            <span
+              className="red-bar"
+              style={{ width: `${dislikes / (likes + dislikes) * 100}%` }}
+            />
           </div>
+
           <Card.Description className="likes-count">
             <div className="likes">
               <Icon name="thumbs up" /> {likes}
@@ -60,11 +66,17 @@ const CardYT = ({
               <Icon name="thumbs down" /> {dislikes}
             </div>
           </Card.Description>
-          <div className="hover-button" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+
+          <div
+            className="hover-button"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
             <Button icon basic size="mini">
               <Icon name="eye" color="blue" />
             </Button>
           </div>
+
           <div className="delete-button" onClick={handleDeleteClick}>
             <Button icon size="mini">
               <Icon name="close" color="red" />

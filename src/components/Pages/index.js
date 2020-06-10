@@ -45,6 +45,16 @@ const Pages = ({
   };
   return (
     <PagesStyled>
+      <div className="movie-per-page">
+        Movies per page : {' '}
+        <Dropdown
+          inline
+          options={moviesPerPageOptions}
+          defaultValue={moviesPerPageOptions[0].value}
+          onChange={handleMoviePerPageChange}
+        />
+      </div>
+
       <Pagination
         className="pagination"
         activePage={activeStatePage}
@@ -53,18 +63,9 @@ const Pages = ({
             ? Math.ceil(movies.length / moviesPerPage)
             : Math.ceil(filteredMovies.length / moviesPerPage)
         }
-        siblingRange={5}
+        siblingRange={3}
         onPageChange={handlePageChange}
       />
-      <span className="movie-per-page">
-        Movies per page : {' '}
-        <Dropdown
-          inline
-          options={moviesPerPageOptions}
-          defaultValue={moviesPerPageOptions[0].value}
-          onChange={handleMoviePerPageChange}
-        />
-      </span>
     </PagesStyled>
   );
 };

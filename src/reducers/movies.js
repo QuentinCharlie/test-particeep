@@ -18,7 +18,6 @@ const initialState = {
   posterBackground: 'none',
 };
 
-
 // Reducer
 const moviesReducer = (state = initialState, action = {}) => {
   switch (action.type) {
@@ -55,33 +54,29 @@ const moviesReducer = (state = initialState, action = {}) => {
       };
     }
 
-    case CHANGE_ACTIVE_PAGE: {
+    case CHANGE_ACTIVE_PAGE:
       return {
         ...state,
         activePage: action.page,
       };
-    }
 
-    case CHANGE_MOVIES_PER_PAGE: {
+    case CHANGE_MOVIES_PER_PAGE:
       return {
         ...state,
         moviesPerPage: action.number,
       };
-    }
 
-    case SET_BACKGROUND_POSTER: {
+    case SET_BACKGROUND_POSTER:
       return {
         ...state,
         posterBackground: action.poster,
       };
-    }
 
-    case REMOVE_BACKGROUND_POSTER: {
+    case REMOVE_BACKGROUND_POSTER:
       return {
         ...state,
         posterBackground: 'none',
       };
-    }
 
     default:
       return state;
