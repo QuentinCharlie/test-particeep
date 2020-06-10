@@ -44,7 +44,7 @@ const CardYT = ({
   };
   return (
     <CardYTStyled>
-      <Card onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+      <Card>
         <Card.Content>
           <Card.Header>{title}</Card.Header>
           <Card.Meta>{category}</Card.Meta>
@@ -60,6 +60,11 @@ const CardYT = ({
               <Icon name="thumbs down" /> {dislikes}
             </div>
           </Card.Description>
+          <div className="hover-button" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+            <Button icon basic size="mini">
+              <Icon name="eye" color="blue" />
+            </Button>
+          </div>
           <div className="delete-button" onClick={handleDeleteClick}>
             <Button icon size="mini">
               <Icon name="close" color="red" />
