@@ -19,6 +19,7 @@ const App = ({
   moviesPerPage,
   filterByCategory,
   changeActiveCategories,
+  changeActivePage,
 }) => {
 
   const categoryOptions = categories.map((category) => ({
@@ -29,7 +30,8 @@ const App = ({
 
   const handleFilterChange = (e, { value }) => {
     filterByCategory(value);
-    changeActiveCategories(value);    
+    changeActiveCategories(value);
+    changeActivePage(1);
   }
 
   useEffect(() => {
@@ -104,6 +106,7 @@ App.propTypes = {
   moviesPerPage: PropTypes.number.isRequired,
   filterByCategory: PropTypes.func.isRequired,
   changeActiveCategories: PropTypes.func.isRequired,
+  changeActivePage: PropTypes.func.isRequired,
 };
 
 App.defaultProps = {
