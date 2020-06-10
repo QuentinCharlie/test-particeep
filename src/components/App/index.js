@@ -1,7 +1,7 @@
 // == Import npm
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Card, Dropdown } from 'semantic-ui-react';
+import { Card, Dropdown } from 'semantic-ui-react';
 
 // == Import
 import CardYT from 'src/containers/CardYT';
@@ -17,6 +17,7 @@ const App = ({
   activeCategories,
   activeStatePage,
   moviesPerPage,
+  posterBackground,
   filterByCategory,
   changeActiveCategories,
   changeActivePage,
@@ -51,17 +52,25 @@ const App = ({
     <AppStyled>
       <h1>Test Particeep</h1>
 
+      { // Displayed only when mouse/finger activates a poster
+        posterBackground !== 'none' && (
+        <div 
+        className="cover"
+        style={{ backgroundImage: `url(${posterBackground})` }}
+      />
+      )}
+
       <Dropdown
         className="filter-menu"
         placeholder='Categories'
         fluid
         multiple
         selection
-        options={categoryOptions}
+        options={categoryOptions} 
         onChange={handleFilterChange}
       />
 
-      <Card.Group centered className="cards">
+      <Card.Group centered className="cards" style={posterBackground !== 'none' ? {opacity: 0} : {opacity: 1}}>
         { // Every movies/categories (when no filter)
           (activeCategories.length === 0 || filteredMovies.length === 0) && (
           paginate(movies, moviesPerPage, activeStatePage).map((movie) =>  (
@@ -72,6 +81,7 @@ const App = ({
               category={movie.category}
               likes={movie.likes}
               dislikes={movie.dislikes}
+              poster={movie.poster}
             />
           )
         ))}
@@ -85,6 +95,7 @@ const App = ({
               category={movie.category}
               likes={movie.likes}
               dislikes={movie.dislikes}
+              poster={movie.poster}
             />
           ))
         )}
@@ -104,6 +115,7 @@ App.propTypes = {
   ]).isRequired,
   activeStatePage: PropTypes.number.isRequired,
   moviesPerPage: PropTypes.number.isRequired,
+  posterBackground: PropTypes.string.isRequired,
   filterByCategory: PropTypes.func.isRequired,
   changeActiveCategories: PropTypes.func.isRequired,
   changeActivePage: PropTypes.func.isRequired,

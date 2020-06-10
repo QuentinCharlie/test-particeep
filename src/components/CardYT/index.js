@@ -14,10 +14,13 @@ const CardYT = ({
   category,
   likes,
   dislikes,
+  poster,
   likedMovies,
   deleteMovie,
   updateCategories,
   changeLikeStatus,
+  setBackgroundPoster,
+  removeBackgroundPoster,
 }) => {
   const handleDeleteClick = () => {
     deleteMovie(id, category);
@@ -31,16 +34,30 @@ const CardYT = ({
   const handleLikeClick = () => {
     changeLikeStatus(id);
   };
+  const handleMouseEnter = () => {
+    setBackgroundPoster(poster);
+  };
+  const handleMouseLeave = () => {
+    removeBackgroundPoster();
+  };
   return (
     <CardYTStyled>
       <Card>
         <Card.Content>
           <Card.Header>{title}</Card.Header>
           <Card.Meta>{category}</Card.Meta>
+
           <div className="like-bar">
-            <span className="green-bar" style={{ width: `${likes / (likes + dislikes) * 100}%` }} />
-            <span className="red-bar" style={{ width: `${dislikes / (likes + dislikes) * 100}%` }} />
+            <span
+              className="green-bar"
+              style={{ width: `${likes / (likes + dislikes) * 100}%` }}
+            />
+            <span
+              className="red-bar"
+              style={{ width: `${dislikes / (likes + dislikes) * 100}%` }}
+            />
           </div>
+
           <Card.Description className="likes-count">
             <div className="likes">
               <Icon name="thumbs up" /> {likes}
@@ -49,6 +66,17 @@ const CardYT = ({
               <Icon name="thumbs down" /> {dislikes}
             </div>
           </Card.Description>
+
+          <div
+            className="hover-button"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
+            <Button icon basic size="mini">
+              <Icon name="eye" color="blue" />
+            </Button>
+          </div>
+
           <div className="delete-button" onClick={handleDeleteClick}>
             <Button icon size="mini">
               <Icon name="close" color="red" />
@@ -74,12 +102,14 @@ CardYT.propTypes = {
   category: PropTypes.string.isRequired,
   likes: PropTypes.number.isRequired,
   dislikes: PropTypes.number.isRequired,
+  poster: PropTypes.string.isRequired,
   likedMovies: PropTypes.object.isRequired,
   deleteMovie: PropTypes.func.isRequired,
   updateCategories: PropTypes.func.isRequired,
   changeLikeStatus: PropTypes.func.isRequired,
+  setBackgroundPoster: PropTypes.func.isRequired,
+  removeBackgroundPoster: PropTypes.func.isRequired,
 };
-
 
 // == Export
 export default CardYT;

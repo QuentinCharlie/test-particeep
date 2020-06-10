@@ -2,8 +2,7 @@
 import { CHANGE_LIKE_STATUS } from 'src/actions/movies';
 
 // Initial State
-const initialState = {
-};
+const initialState = {};
 
 // Reducer
 const likesReducer = (state = initialState, action = {}) => {

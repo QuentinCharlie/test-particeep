@@ -9,10 +9,16 @@ const CardYTStyled = styled.div`
     justify-content: space-evenly;
   }
 
+  .hover-button {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+  }
+
   .delete-button {
     position: absolute;
     top: 4px;
-    right: 0;
+    right: 1px;
   }
 
   .like-bar {
