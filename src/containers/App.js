@@ -14,6 +14,8 @@ const mapStateToProps = (state) => ({
   filteredMovies: state.movies.filteredMovies,
   categories: state.categories.uniqueCategories,
   activeCategories: state.categories.activeCategories,
+  activeStatePage: state.movies.activePage,
+  moviesPerPage: state.movies.moviesPerPage,
 });
 
 // == Actions / dispatch

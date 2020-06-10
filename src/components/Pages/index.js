@@ -9,6 +9,7 @@ import PagesStyled from './PagesStyled';
 // == Composant
 const Pages = ({
   movies,
+  filteredMovies,
   activeStatePage,
   moviesPerPage,
   changeActivePage,
@@ -45,7 +46,11 @@ const Pages = ({
     <PagesStyled>
       <Pagination
         activePage={activeStatePage}
-        totalPages={Math.ceil(movies.length / moviesPerPage)}
+        totalPages={
+          filteredMovies.length === 0
+            ? Math.ceil(movies.length / moviesPerPage)
+            : Math.ceil(filteredMovies.length / moviesPerPage)
+        }
         siblingRange={5}
         onPageChange={handlePageChange}
       />
@@ -64,6 +69,7 @@ const Pages = ({
 
 Pages.propTypes = {
   movies: PropTypes.array.isRequired,
+  filteredMovies: PropTypes.array.isRequired,
   activeStatePage: PropTypes.number.isRequired,
   moviesPerPage: PropTypes.number.isRequired,
   changeActivePage: PropTypes.func.isRequired,

@@ -15,6 +15,8 @@ const App = ({
   filteredMovies,
   categories,
   activeCategories,
+  activeStatePage,
+  moviesPerPage,
   filterByCategory,
   changeActiveCategories,
 }) => {
@@ -31,13 +33,17 @@ const App = ({
   }
 
   useEffect(() => {
-    // si une categorie dans activeCategories n'existe plus dans uniqueCategories/categories
-    // la supprimer d'activeCategories
+    // Delete a category if said category cant be found anymore in uniqueCategories in state
     if (activeCategories.length > 0) {
       const updatedActiveCategoriesAfterDelete = activeCategories.filter((category) => categories.includes(category));
       changeActiveCategories(updatedActiveCategoriesAfterDelete);
     }
   }, [categories]);
+
+  function paginate(array, itemsPerPage, pageNumber) {
+    // human-readable page numbers usually start with 1, so we reduce 1 in the first argument
+    return array.slice((pageNumber - 1) * itemsPerPage, pageNumber * itemsPerPage);
+  }
 
   return (
     <AppStyled>
@@ -55,7 +61,7 @@ const App = ({
 
       <Card.Group centered className="cards">
         {(activeCategories.length === 0 || filteredMovies.length === 0) && (
-          movies.map((movie) => (
+          paginate(movies, moviesPerPage, activeStatePage).map((movie) =>  (
             <CardYT 
               key={movie.id}
               id={movie.id}
@@ -64,10 +70,10 @@ const App = ({
               likes={movie.likes}
               dislikes={movie.dislikes}
             />
-          ))
-        )}
+          )
+        ))}
         {activeCategories.length > 0 && (
-          filteredMovies.map((movie) => (
+          paginate(filteredMovies, moviesPerPage, activeStatePage).map((movie) => (
             <CardYT 
               key={movie.id}
               id={movie.id}
@@ -92,6 +98,8 @@ App.propTypes = {
     PropTypes.string,
     PropTypes.array
   ]).isRequired,
+  activeStatePage: PropTypes.number.isRequired,
+  moviesPerPage: PropTypes.number.isRequired,
   filterByCategory: PropTypes.func.isRequired,
   changeActiveCategories: PropTypes.func.isRequired,
 };
