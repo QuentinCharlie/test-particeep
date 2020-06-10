@@ -2,6 +2,8 @@
 import {
   DELETE_MOVIE,
   FILTER_BY_CATEGORY,
+  CHANGE_ACTIVE_PAGE,
+  CHANGE_MOVIES_PER_PAGE,
 } from 'src/actions/movies';
 
 import movies from 'src/data/movies';
@@ -9,6 +11,8 @@ import movies from 'src/data/movies';
 const initialState = {
   movies,
   filteredMovies: [],
+  activePage: 1,
+  moviesPerPage: 4,
 };
 
 
@@ -45,6 +49,20 @@ const moviesReducer = (state = initialState, action = {}) => {
         filteredMovies: [
           ...state.movies,
         ],
+      };
+    }
+
+    case CHANGE_ACTIVE_PAGE: {
+      return {
+        ...state,
+        activePage: action.page,
+      };
+    }
+
+    case CHANGE_MOVIES_PER_PAGE: {
+      return {
+        ...state,
+        moviesPerPage: action.number,
       };
     }
 

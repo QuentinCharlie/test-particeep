@@ -1,10 +1,11 @@
 // == Import npm
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Menu, Card, Dropdown, Pagination } from 'semantic-ui-react';
+import { Button, Card, Dropdown } from 'semantic-ui-react';
 
 // == Import
 import CardYT from 'src/containers/CardYT';
+import Pages from 'src/containers/Pages';
 import AppStyled from './AppStyled';
 
 
@@ -15,12 +16,8 @@ const App = ({
   categories,
   activeCategories,
   filterByCategory,
-  changeactiveCategories,
+  changeActiveCategories,
 }) => {
-
-  const handlePageChange = (e, value) => {
-    const activePage = value.activePage;
-  }
 
   const categoryOptions = categories.map((category) => ({
     key: category,
@@ -30,8 +27,7 @@ const App = ({
 
   const handleFilterChange = (e, { value }) => {
     filterByCategory(value);
-    changeactiveCategories(value);
-    
+    changeActiveCategories(value);    
   }
 
   useEffect(() => {
@@ -39,7 +35,7 @@ const App = ({
     // la supprimer d'activeCategories
     if (activeCategories.length > 0) {
       const updatedActiveCategoriesAfterDelete = activeCategories.filter((category) => categories.includes(category));
-      changeactiveCategories(updatedActiveCategoriesAfterDelete);
+      changeActiveCategories(updatedActiveCategoriesAfterDelete);
     }
   }, [categories]);
 
@@ -84,7 +80,7 @@ const App = ({
         )}
         
       </Card.Group>
-      <Pagination defaultActivePage={1} totalPages={movies.length/4} siblingRange={5} onPageChange={handlePageChange} />
+      <Pages />
     </AppStyled>
   );
 };
@@ -97,7 +93,7 @@ App.propTypes = {
     PropTypes.array
   ]).isRequired,
   filterByCategory: PropTypes.func.isRequired,
-  changeactiveCategories: PropTypes.func.isRequired,
+  changeActiveCategories: PropTypes.func.isRequired,
 };
 
 App.defaultProps = {
