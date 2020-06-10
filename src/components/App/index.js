@@ -94,6 +94,7 @@ const App = ({
               category={movie.category}
               likes={movie.likes}
               dislikes={movie.dislikes}
+              poster={movie.poster}
             />
           ))
         )}
