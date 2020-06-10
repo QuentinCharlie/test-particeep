@@ -45,6 +45,7 @@ const Pages = ({
   return (
     <PagesStyled>
       <Pagination
+        className="pagination"
         activePage={activeStatePage}
         totalPages={
           filteredMovies.length === 0
