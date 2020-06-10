@@ -17,6 +17,7 @@ const App = ({
   activeCategories,
   activeStatePage,
   moviesPerPage,
+  posterBackground,
   filterByCategory,
   changeActiveCategories,
   changeActivePage,
@@ -51,6 +52,13 @@ const App = ({
     <AppStyled>
       <h1>Test Particeep</h1>
 
+      {posterBackground !== 'none' && (
+        <div 
+        className="cover"
+        style={{ backgroundImage: `url(${posterBackground})` }}
+      />
+      )}
+
       <Dropdown
         className="filter-menu"
         placeholder='Categories'
@@ -72,6 +80,7 @@ const App = ({
               category={movie.category}
               likes={movie.likes}
               dislikes={movie.dislikes}
+              poster={movie.poster}
             />
           )
         ))}
@@ -104,6 +113,7 @@ App.propTypes = {
   ]).isRequired,
   activeStatePage: PropTypes.number.isRequired,
   moviesPerPage: PropTypes.number.isRequired,
+  posterBackground: PropTypes.string.isRequired,
   filterByCategory: PropTypes.func.isRequired,
   changeActiveCategories: PropTypes.func.isRequired,
   changeActivePage: PropTypes.func.isRequired,

@@ -14,10 +14,13 @@ const CardYT = ({
   category,
   likes,
   dislikes,
+  poster,
   likedMovies,
   deleteMovie,
   updateCategories,
   changeLikeStatus,
+  setBackgroundPoster,
+  removeBackgroundPoster,
 }) => {
   const handleDeleteClick = () => {
     deleteMovie(id, category);
@@ -31,9 +34,17 @@ const CardYT = ({
   const handleLikeClick = () => {
     changeLikeStatus(id);
   };
+  const handleMouseEnter = () => {
+    console.log(poster);
+    setBackgroundPoster(poster);
+  };
+  const handleMouseLeave = () => {
+    // console.log('leaves');
+    removeBackgroundPoster();
+  };
   return (
     <CardYTStyled>
-      <Card>
+      <Card onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
         <Card.Content>
           <Card.Header>{title}</Card.Header>
           <Card.Meta>{category}</Card.Meta>
@@ -74,12 +85,14 @@ CardYT.propTypes = {
   category: PropTypes.string.isRequired,
   likes: PropTypes.number.isRequired,
   dislikes: PropTypes.number.isRequired,
+  poster: PropTypes.string.isRequired,
   likedMovies: PropTypes.object.isRequired,
   deleteMovie: PropTypes.func.isRequired,
   updateCategories: PropTypes.func.isRequired,
   changeLikeStatus: PropTypes.func.isRequired,
+  setBackgroundPoster: PropTypes.func.isRequired,
+  removeBackgroundPoster: PropTypes.func.isRequired,
 };
-
 
 // == Export
 export default CardYT;

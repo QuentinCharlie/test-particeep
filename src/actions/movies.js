@@ -6,6 +6,8 @@ export const FILTER_BY_CATEGORY = 'FILTER_BY_CATEGORY';
 export const CHANGE_ACTIVE_CATEGORY = 'CHANGE_ACTIVE_CATEGORY';
 export const CHANGE_ACTIVE_PAGE = 'CHANGE_ACTIVE_PAGE';
 export const CHANGE_MOVIES_PER_PAGE = 'CHANGE_MOVIES_PER_PAGE';
+export const SET_BACKGROUND_POSTER = 'SET_BACKGROUND_POSTER';
+export const REMOVE_BACKGROUND_POSTER = 'REMOVE_BACKGROUND_POSTER';
 
 // Creators
 export const deleteMovie = (id, category) => ({
@@ -42,4 +44,13 @@ export const changeActivePage = (page) => ({
 export const changeMoviesPerPage = (number) => ({
   type: CHANGE_MOVIES_PER_PAGE,
   number,
+});
+
+export const setBackgroundPoster = (poster) => ({
+  type: SET_BACKGROUND_POSTER,
+  poster,
+});
+
+export const removeBackgroundPoster = () => ({
+  type: REMOVE_BACKGROUND_POSTER,
 });

@@ -4,6 +4,8 @@ import {
   FILTER_BY_CATEGORY,
   CHANGE_ACTIVE_PAGE,
   CHANGE_MOVIES_PER_PAGE,
+  SET_BACKGROUND_POSTER,
+  REMOVE_BACKGROUND_POSTER,
 } from 'src/actions/movies';
 
 import movies from 'src/data/movies';
@@ -13,6 +15,7 @@ const initialState = {
   filteredMovies: [],
   activePage: 1,
   moviesPerPage: 4,
+  posterBackground: 'none',
 };
 
 
@@ -63,6 +66,20 @@ const moviesReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         moviesPerPage: action.number,
+      };
+    }
+
+    case SET_BACKGROUND_POSTER: {
+      return {
+        ...state,
+        posterBackground: action.poster,
+      };
+    }
+
+    case REMOVE_BACKGROUND_POSTER: {
+      return {
+        ...state,
+        posterBackground: 'none',
       };
     }
 

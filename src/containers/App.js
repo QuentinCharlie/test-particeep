@@ -16,6 +16,7 @@ const mapStateToProps = (state) => ({
   activeCategories: state.categories.activeCategories,
   activeStatePage: state.movies.activePage,
   moviesPerPage: state.movies.moviesPerPage,
+  posterBackground: state.movies.posterBackground,
 });
 
 // == Actions / dispatch

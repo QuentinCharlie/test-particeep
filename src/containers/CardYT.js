@@ -4,7 +4,13 @@ import { connect } from 'react-redux';
 import CardYT from 'src/components/CardYT';
 
 // Action Creators
-import { deleteMovie, changeLikeStatus, updateCategories } from 'src/actions/movies';
+import {
+  deleteMovie,
+  changeLikeStatus,
+  updateCategories,
+  setBackgroundPoster,
+  removeBackgroundPoster,
+} from 'src/actions/movies';
 
 // == Data / state
 // Notre composant à besoin de données depuis le state ?
@@ -26,6 +32,12 @@ const mapDispatchToProps = (dispatch) => ({
   },
   updateCategories: (updatedCategories) => {
     dispatch(updateCategories(updatedCategories));
+  },
+  setBackgroundPoster: (poster) => {
+    dispatch(setBackgroundPoster(poster));
+  },
+  removeBackgroundPoster: () => {
+    dispatch(removeBackgroundPoster());
   },
 });
 
