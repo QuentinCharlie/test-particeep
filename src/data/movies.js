@@ -40,7 +40,7 @@ const movies = [
     category: 'Thriller',
     likes: 11,
     dislikes: 3,
-    poster: 'https://images8.alphacoders.com/640/thumb-1920-640791.jpg',
+    poster: 'https://images4.alphacoders.com/650/thumb-1920-650215.jpg',
   }, {
     id: '7',
     title: 'Pulp Fiction',
