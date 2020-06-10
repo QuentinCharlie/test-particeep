@@ -18,6 +18,10 @@ const AppStyled = styled.div`
     padding: 0 2em;
   }
 
+  .cards {
+    margin-bottom: 2em;
+  }
+
 `;
 
 

@@ -10,7 +10,7 @@ initialMovies.map((movie) => categories.push(movie.category));
 const uniqueCategories = [...new Set(categories)];
 
 const initialState = {
-  activeCategory: 'all',
+  activeCategories: [],
   uniqueCategories,
 };
 
@@ -27,15 +27,15 @@ const categoriesReducer = (state = initialState, action = {}) => {
     }
 
     case CHANGE_ACTIVE_CATEGORY: {
-      if (state.activeCategory === action.category) {
+      if (state.activeCategories === action.category) {
         return {
           ...state,
-          activeCategory: 'all',
+          activeCategories: [],
         };
       }
       return {
         ...state,
-        activeCategory: action.category,
+        activeCategories: action.category,
       };
     }
 

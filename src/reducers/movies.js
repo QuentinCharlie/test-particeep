@@ -30,9 +30,9 @@ const moviesReducer = (state = initialState, action = {}) => {
     }
 
     case FILTER_BY_CATEGORY: {
-      if (action.category !== 'all') {
+      if (action.category.length > 0) {
         // eslint-disable-next-line max-len
-        const filteredByCategory = state.movies.filter((movie) => movie.category === action.category);
+        const filteredByCategory = state.movies.filter((movie) => action.category.includes(movie.category));
         return {
           ...state,
           filteredMovies: [

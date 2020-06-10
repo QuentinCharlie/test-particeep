@@ -27,7 +27,7 @@ export const filterByCategory = (category) => ({
   category,
 });
 
-export const changeActiveCategory = (category) => ({
+export const changeactiveCategories = (category) => ({
   type: CHANGE_ACTIVE_CATEGORY,
   category,
 });

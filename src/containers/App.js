@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import App from 'src/components/App';
 
 // Action Creators
-import { filterByCategory, changeActiveCategory } from 'src/actions/movies';
+import { filterByCategory, changeactiveCategories } from 'src/actions/movies';
 
 // == Data / state
 // Notre composant à besoin de données depuis le state ?
@@ -13,7 +13,7 @@ const mapStateToProps = (state) => ({
   movies: state.movies.movies,
   filteredMovies: state.movies.filteredMovies,
   categories: state.categories.uniqueCategories,
-  activeCategory: state.categories.activeCategory,
+  activeCategories: state.categories.activeCategories,
 });
 
 // == Actions / dispatch
@@ -24,8 +24,8 @@ const mapDispatchToProps = (dispatch) => ({
   filterByCategory: (category) => {
     dispatch(filterByCategory(category));
   },
-  changeActiveCategory: (category) => {
-    dispatch(changeActiveCategory(category));
+  changeactiveCategories: (category) => {
+    dispatch(changeactiveCategories(category));
   },
 });
 
