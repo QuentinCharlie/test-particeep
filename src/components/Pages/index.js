@@ -41,6 +41,7 @@ const Pages = ({
 
   const handleMoviePerPageChange = (e, { value }) => {
     changeMoviesPerPage(value);
+    changeActivePage(1);
   };
   return (
     <PagesStyled>
