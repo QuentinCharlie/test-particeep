@@ -37,6 +37,10 @@ const CardYT = ({
         <Card.Content>
           <Card.Header>{title}</Card.Header>
           <Card.Meta>{category}</Card.Meta>
+          <div className="like-bar">
+            <span className="green-bar" style={{ width: `${likes / (likes + dislikes) * 100}%` }} />
+            <span className="red-bar" style={{ width: `${dislikes / (likes + dislikes) * 100}%` }} />
+          </div>
           <Card.Description className="likes-count">
             <div className="likes">
               <Icon name="thumbs up" /> {likes}
@@ -51,7 +55,11 @@ const CardYT = ({
             </Button>
           </div>
         </Card.Content>
-        <Button className="like-button" circular onClick={handleLikeClick} color={likedMovies[Number(id)] === true ? 'red' : 'grey'}>
+        <Button
+          className="like-button"
+          onClick={handleLikeClick}
+          color={likedMovies[Number(id)] === true ? 'red' : 'grey'}
+        >
           <Icon name="like" />
         </Button>
       </Card>

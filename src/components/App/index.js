@@ -41,7 +41,7 @@ const App = ({
   }, [categories]);
 
   function paginate(array, itemsPerPage, pageNumber) {
-    // human-readable page numbers usually start with 1, so we reduce 1 in the first argument
+    // Page numbers usually start with 1, so we reduce 1 in the first argument to fit array first index
     return array.slice((pageNumber - 1) * itemsPerPage, pageNumber * itemsPerPage);
   }
 
@@ -60,7 +60,8 @@ const App = ({
       />
 
       <Card.Group centered className="cards">
-        {(activeCategories.length === 0 || filteredMovies.length === 0) && (
+        { // Every movies/categories (when no filter)
+          (activeCategories.length === 0 || filteredMovies.length === 0) && (
           paginate(movies, moviesPerPage, activeStatePage).map((movie) =>  (
             <CardYT 
               key={movie.id}
@@ -72,7 +73,8 @@ const App = ({
             />
           )
         ))}
-        {activeCategories.length > 0 && (
+        { // Movies listed by categories (when filtered)
+          activeCategories.length > 0 && (
           paginate(filteredMovies, moviesPerPage, activeStatePage).map((movie) => (
             <CardYT 
               key={movie.id}
